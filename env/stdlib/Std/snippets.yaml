@@ -2,8 +2,17 @@ Std.Base:
   $global:
     - name: pi
       documentation: The mathematical constant π = 3.14159265359.
-    - name: Map.empty
-      documentation: An empty map.
+    - name: Map.singleton "foo" 10
+      documentation: Creates a map with a single element.
+    - name: JSON.empty
+      documentation: Empty JSON object.
+    - name: readFile "/example/path/to/data"
+      documentation: Read file from the hard drive.
+    - name: writeFile "/example/path/to/file" "lorem ipsum"
+      documentation: Write a Text object into a file with a given path.
+  $imported:
+    - name: JSON.parse '{"a": 10, "b": 20}'
+      documentation: JSON from a Text.
   Int:
     - name: + 3
       documentation: Add two Integers.
@@ -152,15 +161,47 @@ Std.Base:
       documentation: Get list length.
     - name: take 1
       documentation: Take first n elements of a list as a new list.
-    - name: drop
+    - name: drop 1
       documentation: Remove first n elements from a list.
     - name: reverse
       documentation: Reverse the list.
     - name: prepend "foo"
       documentation: Prepend an element to the list.
+  Map:
+    - name: size
+      documentation: The number of values stored in the map.
+    - name: toList
+      documentation: Convert the map into a list of (key, value) pairs.
+    - name: map (_.toText)
+      documentation: Apply a function to each value in the map.
+    - name: delete "foo"
+      documentation: Delete key from the map.
+  JSON:
+    - name: insert "foo" 10
+      documentation: Insert new element to JSON.
+    - name: delete "bar"
+      documentation: Remove element with given key from JSON. 
+    - name: lookup "foo"
+      documentation: `Maybe` value associated with a given key.
+    - name: has "foo"
+      documentation: Check if the key is present in JSON structure.
+    - name: at 1
+      documentation: Get `Maybe` element with a given index from `JSON`.
+  Stream:
+    - name: drop 1
+      documentation: Drop the given number of elements from the stream.
+    - name: take 1
+      documentation: Return the prefix of the stream of given length.
+    - name: consume 5
+      documentation: List of the first `n` elements of stream and the result of dropping the first `n` values of it.
+
+Std.Geo:
+  GeoJSONFeature:
+    - name: addProperty "popupContent" "home"
+      documentation: Add a property do GeoJSONFeature.
 
 Std.HTTP:
-  $global:
+  $global: 
     - name: Http.getJSON "http://ip.jsontest.com"
       documentation: Fetch data from a JSON endpoint.
 
