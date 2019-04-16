@@ -204,6 +204,40 @@ Std.HTTP:
   $global: 
     - name: Http.getJSON "http://ip.jsontest.com"
       documentation: Fetch data from a JSON endpoint.
+  $imported:
+    - name: Http.get "http://httpbin.org/get"
+      documentation: Create a basic Http GET request for a given uri.
+    - name: Http.post "http://httpbin.org/post" . addHeader "Accept" "*" . setBasicAuth "user" "pass" . setParam "someParam" "someValue" . perform
+      documentation: Create a basic Http POST request for a given uri.
+    - name: Http.delete "http://httpbin.org/delete"
+      documentation: Create a basic Http DELETE request for a given uri.
+    - name: emptyHttpBody
+      documentation: Create an empty `HttpSimpleBody`.
+  HttpSimpleBody:
+    - name: addValue "foo" "bar"
+      documentation: Add one pair to the body.
+  HttpRequest:
+    - name: addHeader "Accept" "*"
+      documentation: Set the header (key) to a value (val). The header needs to be a valid Http header name, like `Accept-Charset` (but the case does not matter).
+    - name: setBasicAuth "user" "pass"
+      documentation: Use the provided username and password as `HttpBasicAuth`.
+    - name: setParam "someParam" "someValue"
+      documentation:
+    - name: perform
+      documentation: Perform the request.
+    - name: setMethod GET
+      documentation: Set the method of this `HttpReuqest` to a given `HttpMethod`.
+  HTTPResponse:
+    - name: successful
+      documentation: Check whether the response came back yielding a successful result.
+    - name: stream
+      documentation: The body of the response as a stream.
+    - name: body
+      documentation: The body of the response as a `Binary` blob.
+    - name: text
+      documentation: Body of the response as a `Text`.
+    - name: json
+      documentation: Body of the response as a `JSON`.
 
 Std.Time:
   $global:
@@ -228,7 +262,7 @@ Std.Time:
     - name: format "%m/%d/%y"
       documentation: Convert Time object to a string with given formatting.
     - name: days
-      documentation: Returns the days number associated with this Time object.
+      documentation: Return the days number associated with this Time object.
     - name: addDays 4
       documentation: Add days to Time object.
     - name: subDays 4
@@ -236,7 +270,7 @@ Std.Time:
     - name: timeOfYear
       documentation: Get the time of year in form of a tuple: (year, month, day)
     - name: timeZone
-      documentation: Returns the timezone associated with this Time object.
+      documentation: Return the timezone associated with this Time object.
     - name: toUTC
-      documentation: Converts Time to UTCTime.
+      documentation: Convert Time to UTCTime.
 
