@@ -8,7 +8,7 @@ Std.Base:
       documentation: Empty JSON object.
     - name: readFile "/example/path/to/data"
       documentation: Read file from the hard drive.
-    - name: writeFile "/example/path/to/file" "lorem ipsum"
+    - name: writeFile "./exampleFile.txt" "lorem ipsum"
       documentation: Write a Text object into a file with a given path.
   $imported:
     - name: JSON.parse '{"a": 10, "b": 20}'
