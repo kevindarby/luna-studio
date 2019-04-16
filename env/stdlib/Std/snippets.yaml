@@ -108,7 +108,7 @@ Std.Base:
       documentation: Change all characters to uppercase.
   Complex:
     - name: modulus
-      documentation: Calculate modulus.
+      documentation: Calculate complex modulus.
   Bool:
     - name: and False
       documentation: Boolean and.
