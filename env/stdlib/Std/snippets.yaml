@@ -54,21 +54,21 @@ Std.Base:
       documentation: TimeInterval in weeks.
   Real:
     - name: + 3.0
-      documentation: Add two floats.
+      documentation: Add two real numbers.
     - name: * 2.0
-      documentation: Multiply two floats.
+      documentation: Multiply two real numbers.
     - name: - 1.3
-      documentation: Substract float from value.
+      documentation: Substract real number from value.
     - name: / 2.0
-      documentation: Divide by float value.
+      documentation: Divide by real number value.
     - name: ^ 2.0
-      documentation: Calculate floating point exponentiation.
+      documentation: Calculate real number exponentiation.
     - name: log 10.0
-      documentation: Calculate floating point logarithm.
+      documentation: Calculate real number logarithm.
     - name: > 10.0
-      documentation: Compare two floating point numbers. 
+      documentation: Compare two real numbers. 
     - name: abs
-      documentation: Calculate absolute value for floating point number.
+      documentation: Calculate absolute value for real number.
     - name: negate 
       documentation: Calculate negation.
     - name: floor 
@@ -86,9 +86,9 @@ Std.Base:
     - name: sqrt
       documentation: Calculate squre root.
     - name: < 10.0
-      documentation: Compare two floating point numbers.
+      documentation: Compare two real numbers.
     - name: == 10.0
-      documentation: Compare two floating point numbers.
+      documentation: Compare two real numbers.
   Text:
     - name: + "foo"
       documentation: Concatenate two texts together.
