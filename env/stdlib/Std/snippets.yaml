@@ -3,7 +3,7 @@ Std.Base:
     - name: pi
       documentation: The mathematical constant π = 3.14159265359.
     - name: Map.singleton "foo" 10
-      documentation: Creates a map with a single element.
+      documentation: Creates a map with a single element with key "foo" and value 10.
     - name: JSON.empty
       documentation: Empty JSON object.
     - name: readFile "/example/path/to/data"
