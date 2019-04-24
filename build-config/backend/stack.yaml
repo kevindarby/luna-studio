@@ -37,11 +37,10 @@ packages:
 - {extra-dep: true, location: ../../libs/batch/plugins/luna-empire}
 - {extra-dep: true, location: ../../libs/luna-studio-common}
 - {extra-dep: true, location: ../../libs/m-logger}
-- {extra-dep: true, location: ../../libs/ws-connector}
 - {extra-dep: true, location: ../../libs/zmq-bus-config}
 - {extra-dep: true, location: ../../libs/zmq-bus}
 - {extra-dep: true, location: ../../libs/zmq-rpc}
-- {location: ../../tools/batch/plugins/ws-connector}
+- {location: ../../backend/ws-connector}
 - {location: ../../tools/batch/plugins/broker}
 - {location: ../../libs/undo-redo}
 - {location: ../../tools/batch/plugins/bus-logger}
