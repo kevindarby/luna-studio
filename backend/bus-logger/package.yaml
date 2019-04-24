@@ -1,6 +1,7 @@
-name:               batch-plugin-bus-logger
-version:            0.1.0.0
-author:             New Byte Order <contact@luna-lang.org>
+name:    luna-bus-logger
+version: 0.1.0.0
+license: AGPLv3
+author:  Luna Team <contact@luna-lang.org>
 
 default-extensions:
   - NoImplicitPrelude
@@ -29,5 +30,5 @@ dependencies:
 
 executables:
   luna-bus-logger:
-    source-dirs: src
+    source-dirs: src-app
     main:        Main.hs

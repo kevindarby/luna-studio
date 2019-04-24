@@ -1,9 +1,7 @@
-name:                luna-ws-connector
-version:             0.1.0.0
-synopsis:            luna-ws-connector
-license:             AGPLv3
-author:              Luna Team
-maintainer:          contact@luna-lang.org
+name:    luna-ws-connector
+version: 0.1.0.0
+license: AGPLv3
+author:  Luna Team <contact@luna-lang.org>
 
 default-extensions:
   - NoImplicitPrelude

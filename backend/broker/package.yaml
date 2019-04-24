@@ -1,6 +1,7 @@
-name:           luna-broker
-version:        0.0.1
-author:         New Byte Order <contact@luna-lang.org>
+name:    luna-broker
+version: 0.1.0.0
+license: AGPLv3
+author:  Luna Team <contact@luna-lang.org>
 
 default-extensions:
     - NoImplicitPrelude
@@ -26,4 +27,4 @@ dependencies:
 executables:
   luna-broker:
     main: Main.hs
-    source-dirs: src
+    source-dirs: src-app
