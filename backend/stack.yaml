@@ -18,7 +18,7 @@ ghc-options:
         -fconstraint-solver-iterations=100
 
 local-bin-path:
-  ../../dist/bin/private
+  ../dist/bin/private
 apply-ghc-options: everything
 
 extra-deps:

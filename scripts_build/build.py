@@ -13,7 +13,7 @@ import copy_configs
 import stack_build
 
 app_dir      = atom_prepare.prep_path('..')
-backend_dir  = atom_prepare.prep_path('../build-config/backend')
+backend_dir  = atom_prepare.prep_path('../backend')
 frontend_dir = atom_prepare.prep_path('../frontend')
 
 

@@ -56,7 +56,7 @@ library:
     source-dirs: src
     ghc-options: -Wall -O2 -threaded
     other-modules:
-        - Paths_luna_project_manager
+        - Paths_luna_double_representation
     dependencies:
         - async
         - base
@@ -75,13 +75,13 @@ library:
         - groom
         - lens
         - lifted-async
+        - luna-api-definition
         - luna-core
         - luna-datafile
         - luna-package
         - luna-empire
         - luna-passes
         - luna-stdlib
-        - luna-studio-common
         - m-logger
         - mtl
         - optparse-applicative
@@ -105,7 +105,7 @@ library:
         - zlib
 
 executables:
-    luna-project-manager:
+    luna-double-representation:
         source-dirs: src-app
         main: Main.hs
         ghc-options: -Wall -O2 -threaded "-with-rtsopts=-N -T"
@@ -113,7 +113,8 @@ executables:
           - base
           - binary
           - containers
-          - luna-project-manager
+          - luna-api-definition
+          - luna-double-representation
           - m-logger
           - matrix
           - optparse-applicative
@@ -122,7 +123,6 @@ executables:
           - unordered-containers
           - zmq-bus
           - zmq-bus-config
-          - luna-studio-common
 
 tests:
     spec:

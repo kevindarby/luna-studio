@@ -8,7 +8,7 @@ import system as system
 from common import create_symlink_or_copy, working_directory
 
 app_dir      = ap.prep_path('..')
-backend_dir  = ap.prep_path('../build-config/backend')
+backend_dir  = ap.prep_path('../backend')
 frontend_dir = ap.prep_path('../frontend')
 runner_dir   = ap.prep_path('../runner')
 
@@ -66,7 +66,7 @@ def link_main_bin ():
 
     # os.symlink('./public/luna-studio', 'main', target_is_directory=True)
 def copy_std_lib ():
-    std_lib_path = ap.prep_path ( '../build-config/backend/.stack-work') + '/**/stdlib'
+    std_lib_path = ap.prep_path ( '../backend/.stack-work') + '/**/stdlib'
     std_lib_folder = glob(std_lib_path,recursive=True)
     print (std_lib_folder)
 

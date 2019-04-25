@@ -101,14 +101,3 @@ library:
     - -threaded
     - -DCOMPRESS_REQUESTS
     # - -DDEBUG_PERF
-
-
-executables:
-  luna-studio-common-test:
-    source-dirs: test
-    main: Main.hs
-    ghc-options: -Wall -O2 -threaded
-    dependencies:
-      - base
-      - prologue
-      - luna-studio-common

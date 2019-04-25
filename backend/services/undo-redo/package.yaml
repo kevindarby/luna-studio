@@ -12,8 +12,8 @@ dependencies:
   - ghc
   - hspec
   - lens
-  - luna-project-manager
-  - luna-studio-common
+  - luna-api-definition
+  - luna-double-representation
   - mtl
   - m-logger
   - prologue
