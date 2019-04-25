@@ -33,18 +33,17 @@ extra-deps:
 allow-newer: true
 
 packages:
-- {extra-dep: false, location: ../../libs/luna-empire}
-- {extra-dep: true, location: ../../libs/batch/plugins/luna-empire}
-- {extra-dep: true, location: ../../libs/luna-studio-common}
-- {extra-dep: true, location: ../../libs/m-logger}
-- {extra-dep: true, location: ../../libs/zmq-bus-config}
-- {extra-dep: true, location: ../../libs/zmq-bus}
-- {extra-dep: true, location: ../../libs/zmq-rpc}
+- {extra-dep: true,  location: ../../common/luna-studio-common}
+- {extra-dep: false, location: ../../backend/libs/luna-empire}
+- {extra-dep: true,  location: ../../backend/libs/m-logger}
+- {extra-dep: true,  location: ../../backend/libs/zmq-bus-config}
+- {extra-dep: true,  location: ../../backend/libs/zmq-bus}
+- {extra-dep: true,  location: ../../backend/libs/zmq-rpc}
 - {location: ../../backend/ws-connector}
-- {location: ../../tools/batch/plugins/broker}
-- {location: ../../libs/undo-redo}
-- {location: ../../tools/batch/plugins/bus-logger}
-- {location: ../../tools/batch/plugins/luna-empire}
+- {location: ../../backend/broker}
+- {location: ../../backend/undo-redo}
+- {location: ../../backend/bus-logger}
+- {location: ../../backend/project-manager}
 - extra-dep: true
   location: {commit: b1217b8a8d0f73d4f72fe9b14b18e195f0251b7a, git: 'https://github.com/luna/luna.git'}
   subdirs:

@@ -1,5 +1,5 @@
 module Empire.Config (
-    module Paths_batch_lib_luna_empire,
+    module Paths_luna_project_manager,
 ) where
 
-import           Paths_batch_lib_luna_empire (version)
+import Paths_luna_project_manager (version)

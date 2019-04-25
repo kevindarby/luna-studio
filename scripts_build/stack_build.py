@@ -9,7 +9,7 @@ from common import create_symlink_or_copy, working_directory
 
 app_dir      = ap.prep_path('..')
 backend_dir  = ap.prep_path('../build-config/backend')
-frontend_dir = ap.prep_path('../luna-studio')
+frontend_dir = ap.prep_path('../frontend')
 runner_dir   = ap.prep_path('../runner')
 
 

@@ -1,9 +1,9 @@
 
 <configuration>
-  <id>s-luna-empire</id>
-  <name>Luna Empire Service</name>
+  <id>s-luna-project-manager</id>
+  <name>Luna Project Manager Service</name>
   <description>Luna backend</description>
-  <executable>%BASE%\..\..\bin\private\luna-empire.exe</executable>
+  <executable>%BASE%\..\..\bin\private\luna-project-manager.exe</executable>
   <startmode>manual</startmode>
 
   <arguments>-v5</arguments>
