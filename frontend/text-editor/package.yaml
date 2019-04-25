@@ -40,7 +40,7 @@ dependencies:
   - ghcjs-base
   - ghcjs-prim
   - lens
-  - luna-studio-common
+  - luna-api-definition
   - luna-lexer
   - mtl
   - prologue
@@ -52,8 +52,6 @@ dependencies:
   - uuid
   - uuid-types
   - vector-text
-
-
 
 executables:
   text-editor:

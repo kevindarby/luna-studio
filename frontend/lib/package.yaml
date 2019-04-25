@@ -48,7 +48,7 @@ dependencies:
   - ghcjs-dom-jsffi
   - hashable
   - lens
-  - luna-studio-common
+  - luna-api-definition
   - mtl
   - placeholders
   - prologue

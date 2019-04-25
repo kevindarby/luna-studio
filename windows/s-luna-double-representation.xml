@@ -1,9 +1,9 @@
 
 <configuration>
-  <id>s-luna-project-manager</id>
-  <name>Luna Project Manager Service</name>
+  <id>s-luna-double-representation</id>
+  <name>Luna Double Representation Service</name>
   <description>Luna backend</description>
-  <executable>%BASE%\..\..\bin\private\luna-project-manager.exe</executable>
+  <executable>%BASE%\..\..\bin\private\luna-double-representation.exe</executable>
   <startmode>manual</startmode>
 
   <arguments>-v5</arguments>

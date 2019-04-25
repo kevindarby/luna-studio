@@ -1,7 +1,7 @@
-name:               luna-studio-common
-version:            0.1.0.0
-author:             New Byte Order <contact@luna-lang.org>
-maintainer:         New Byte Order <contact@luna-lang.org>
+name:    luna-api-definition
+version: 0.1.0.0
+license: AGPL-3
+author:  Luna Team <contact@luna-lang.org>
 
 flags:
   debug:

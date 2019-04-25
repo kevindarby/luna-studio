@@ -21,11 +21,6 @@ local-bin-path:
   ../../dist/bin/private
 apply-ghc-options: everything
 
-# package-indices:
-#   - name:            standard-hackage
-#     download-prefix: https://hackage.haskell.org/package/
-#     http: https://hackage.haskell.org/01-index.tar.gz
-
 extra-deps:
 - c-storable-deriving-0.1.3
 - unagi-chan-0.4.1.0
@@ -33,17 +28,17 @@ extra-deps:
 allow-newer: true
 
 packages:
-- {extra-dep: true,  location: ../../common/luna-studio-common}
-- {extra-dep: false, location: ../../backend/libs/luna-empire}
-- {extra-dep: true,  location: ../../backend/libs/m-logger}
-- {extra-dep: true,  location: ../../backend/libs/zmq-bus-config}
-- {extra-dep: true,  location: ../../backend/libs/zmq-bus}
-- {extra-dep: true,  location: ../../backend/libs/zmq-rpc}
-- {location: ../../backend/ws-connector}
-- {location: ../../backend/broker}
-- {location: ../../backend/undo-redo}
-- {location: ../../backend/bus-logger}
-- {location: ../../backend/project-manager}
+- {extra-dep: true, location: ../common/api-definition}
+- {extra-dep: true, location: libs/luna-empire}
+- {extra-dep: true, location: libs/m-logger}
+- {extra-dep: true, location: libs/zmq-bus-config}
+- {extra-dep: true, location: libs/zmq-bus}
+- {extra-dep: true, location: libs/zmq-rpc}
+- {location: services/ws-connector}
+- {location: services/broker}
+- {location: services/undo-redo}
+- {location: services/bus-logger}
+- {location: services/double-representation}
 - extra-dep: true
   location: {commit: b1217b8a8d0f73d4f72fe9b14b18e195f0251b7a, git: 'https://github.com/luna/luna.git'}
   subdirs:

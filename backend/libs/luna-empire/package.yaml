@@ -56,6 +56,7 @@ dependencies:
     - lens
     - lens-utils
     - lifted-base
+    - luna-api-definition
     - luna-core
     - luna-cpp-containers
     - luna-data-storable
@@ -72,7 +73,6 @@ dependencies:
     - luna-passes
     - luna-runtime
     - luna-stdlib
-    - luna-studio-common
     - luna-syntax-definition
     - luna-syntax-text-lexer
     - luna-syntax-text-model

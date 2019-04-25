@@ -71,7 +71,7 @@ dependencies:
   - ghcjs-prim
   - hashable
   - lens
-  - luna-studio-common
+  - luna-api-definition
   - luna-lexer
   - matrix
   - mtl
