@@ -1,14 +1,8 @@
 # TypeScript Style Guide
-
-Prettier for formatting?
-
-Prettier for Formattin Run as Precommit hoook. Fail on CI if not run:
-
-
-
-SOURCE NOTES: Reasoning behind the code.
-
-Should incorporate notes based on the code-review guidelines
+Like many style guides, this TypeScript style guide exists for two primary
+reasons. The first is to provide guidelines that result in a consistent code
+style across all of the Luna codebases, while the second is to guide people
+towards a style that is expressive while still easy to read and understand.
 
 <!-- MarkdownTOC levels="2,3" autolink="true" -->
 
@@ -24,14 +18,14 @@ Should incorporate notes based on the code-review guidelines
 
 ## Code Formatting
 Rather than a whole host of complicated formatting rules for TypeScript, we make
-use of [prettier](https://prettier.io/), an opinionated code formatter. All 
+use of [prettier](https://prettier.io/), an opinionated code formatter. All
 TypeScript code should be formatted using prettier, though the point at which
 you do this is up to you. We recommend either on-save in your editor, or using
 a precommit hook.
 
 The prettier configuration that can be used is located in the root of this
 repository, and should be copied to all other repositories containing TypeScript
-code if it is not already there. 
+code if it is not already there.
 
 ## Comments
 Comments are a tricky area to get right, as we have found that comments often
