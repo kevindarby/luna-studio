@@ -5,11 +5,14 @@ import Prologue hiding (Item)
 import qualified Control.Lens.Aeson as LensAeson
 import qualified Data.Aeson         as Aeson
 
+import Path (Path, Abs, Dir)
+
 data Item = Item
     { _name         :: Text
+    , _path         :: Path Abs Dir
+    , _thumb        :: Maybe Text
     , _description  :: Maybe Text
     , _lastOpenTime :: Maybe Int64
-    , _thumbnailUri :: Maybe Text
     , _openUri      :: Text
     } deriving (Eq, Generic, Show)
 

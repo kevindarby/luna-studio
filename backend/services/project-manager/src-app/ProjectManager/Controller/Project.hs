@@ -15,7 +15,7 @@ index :: MonadApp m => m [ApiProject.Item]
 index = do
     projs <- Repo.run $ Map.elems <$> Repo.getProjects
     for projs $ \proj -> do
-        pure $ ApiProject.Item (proj ^. Project.name) Nothing (proj ^. Project.lastOpen) Nothing ""
+        pure $ ApiProject.Item (proj ^. Project.name) (proj ^. Project.path) Nothing Nothing (proj ^. Project.lastOpen) ""
 
 {-pure [-}
     {-ApiProject.Item "HelloProject" (Just "Dummy project") (Just 98765432) Nothing "/projects/HelloProject/open",-}

@@ -60,6 +60,7 @@ library:
     - base
     - bytestring
     - lens-utils
+    - path
     - prologue
 
 executables:

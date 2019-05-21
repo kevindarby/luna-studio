@@ -149,8 +149,8 @@ recentProjectsPaths = ->
         paths.push recentProject.uri
     return paths
 
-mkRecentProject = (projectPath) ->
-    new ProjectItem {uri: projectPath}, recentClasses, (progress, finalize) =>
+mkRecentProject = (projectPath, name, thumb) ->
+    new ProjectItem {uri: projectPath, thumb: thumb, name: name}, recentClasses, (progress, finalize) =>
         progress 0.5
         tryCloseAllFiles =>
             atom.project.setPaths [projectPath]
@@ -238,12 +238,10 @@ module.exports =
 
         refreshRecentList: (callback) =>
             recentProjects = []
-            loadRecentNoCheck (serializedProjectPaths) =>
-                serializedProjectPaths.forEach (serializedProjectPath) =>
-                    try
-                        fs.accessSync serializedProjectPath
-                        recentProjects.push mkRecentProject serializedProjectPath
-                    catch error # we can just silently omit non-existing projects
+            request.get {url: "http://127.0.0.1:50505/projects", json: true}, (e, r, projects) ->
+                console.log(projects)
+                recentProjects = projects.map (project) ->
+                    mkRecentProject(project.path, project.name, project.thumb)
                 callback?()
 
         addRecent: (recentProjectPath) =>

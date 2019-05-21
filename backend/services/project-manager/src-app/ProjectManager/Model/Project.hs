@@ -10,6 +10,7 @@ data Project = Project
     { _path   :: Path Abs Dir
     , _config :: Package.Config
     , _lastOpen :: Maybe Int64
+    , _hasThumb :: Bool
     } deriving (Show, Eq)
 
 makeLenses ''Project

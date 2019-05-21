@@ -71,8 +71,9 @@ listProjectsInDirectory container = do
     subdirs <- fst <$> PathIO.listDir container
     configs <- fmap catMaybes $ for subdirs $ \path ->
         (path,) <<$>> Package.tryGetConfigFile path
-    for configs $ \(path, cfg) ->
-        pure $ Project.Project path cfg def
+    for configs $ \(path, cfg) -> do
+        hasThumb <- PathIO.doesFileExist $ path </> $(Path.mkRelFile "thumb.png")
+        pure $ Project.Project path cfg def hasThumb
 
 initialize :: MonadRepo m => m ()
 initialize = do
