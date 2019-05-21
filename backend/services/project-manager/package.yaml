@@ -71,6 +71,8 @@ executables:
       - aeson
       - base
       - containers
+      - layered-state
+      - lens-utils
       - luna-bus
       - luna-package
       - luna-project-manager
@@ -79,3 +81,5 @@ executables:
       - prologue
       - snap-core
       - snap-server
+      - uuid
+      - yaml

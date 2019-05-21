@@ -14,13 +14,13 @@ import ProjectManager.App (MonadApp)
 import Path (Path, Abs, Rel, Dir, File)
 
 
-listProjectsInDirectory :: MonadApp m => Path Abs Dir -> m [Project]
-listProjectsInDirectory container = do
-    subdirs <- fst <$> PathIO.listDir container
-    configs <- fmap catMaybes $ for subdirs $ \path ->
-        (path,) <<$>> Package.tryGetConfigFile path
-    for configs $ \(path, cfg) ->
-        pure $ Project (cfg ^. Config.name) cfg path Nothing
+{-listProjectsInDirectory :: MonadApp m => Path Abs Dir -> m [Project]-}
+{-listProjectsInDirectory container = do-}
+    {-subdirs <- fst <$> PathIO.listDir container-}
+    {-configs <- fmap catMaybes $ for subdirs $ \path ->-}
+        {-(path,) <<$>> Package.tryGetConfigFile path-}
+    {-for configs $ \(path, cfg) ->-}
+        {-pure $ Project (cfg ^. Config.name) cfg path Nothing-}
 
 
     {-projectPaths <- liftIO $ Package.getLunaPackagesFromDir container-}

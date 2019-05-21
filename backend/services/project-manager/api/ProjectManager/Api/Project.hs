@@ -5,8 +5,6 @@ import Prologue hiding (Item)
 import qualified Control.Lens.Aeson as LensAeson
 import qualified Data.Aeson         as Aeson
 
-import Data.ByteString (ByteString)
-
 data Item = Item
     { _name         :: Text
     , _description  :: Maybe Text
