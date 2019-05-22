@@ -5,6 +5,9 @@ import Prologue
 import qualified Luna.Package.Configuration.Local as Package
 
 import Path (Path, Abs, Rel, Dir, File)
+import Data.UUID (UUID)
+
+type Id = UUID
 
 data Project = Project
     { _path   :: Path Abs Dir

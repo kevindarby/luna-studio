@@ -62,6 +62,7 @@ library:
     - lens-utils
     - path
     - prologue
+    - uuid
 
 executables:
   luna-project-manager:
@@ -71,12 +72,15 @@ executables:
     dependencies:
       - aeson
       - base
+      - bytestring
       - containers
       - layered-state
       - lens-utils
+      - lifted-base
       - luna-bus
       - luna-package
       - luna-project-manager
+      - monad-control
       - path
       - path-io
       - prologue

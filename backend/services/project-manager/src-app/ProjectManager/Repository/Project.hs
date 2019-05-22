@@ -4,12 +4,14 @@ import Prologue
 
 import qualified Control.Lens.Aeson as LensAeson
 import qualified ProjectManager.Model.Project as Project
+import qualified ProjectManager.App as App
 import qualified System.Environment as Env
 import qualified Control.Monad.State.Layered as State
 import qualified Path
 import qualified Data.Map as Map
 import qualified Data.Yaml as Yaml
 import qualified Data.UUID.V4 as UUID
+import qualified Data.UUID    as UUID
 import qualified Path.IO            as PathIO
 import qualified Luna.Package.Configuration.Local as Config
 import qualified Luna.Package as Package
@@ -17,13 +19,13 @@ import qualified Luna.Package as Package
 import ProjectManager.Model.Project (Project)
 import Path (Path, Abs, Rel, Dir, File, (</>))
 import Data.Map (Map)
-import Data.UUID (UUID)
+import ProjectManager.App (HandlerException, MonadApp)
+import Data.ByteString (ByteString)
 
-type ProjectId = UUID
 
 data CacheItem = CacheItem
     { _path     :: Path Abs Dir
-    , _id       :: ProjectId
+    , _id       :: Project.Id
     , _lastOpen :: Maybe Int64
     } deriving (Generic)
 
@@ -38,17 +40,30 @@ makeLenses ''CacheItem
 
 
 data State = State
-    { _projects  :: Map ProjectId Project
+    { _projects  :: Map Project.Id Project
     , _cachePath :: Path Abs File
     , _projectsRootPath :: Path Abs Dir
     }
 
 makeLenses ''State
 
+data ProjectNotFound
+    = InvalidId
+    | ProjectDoesNotExist Project.Id
+    deriving (Show)
+
+instance Exception ProjectNotFound where
+    displayException InvalidId = "Invalid Project Id"
+    displayException (ProjectDoesNotExist id) = "Project does not exist: " <> show id
+
+instance HandlerException ProjectNotFound where
+    httpCode = const 404
+
+
 mkState :: Path Abs File -> Path Abs Dir -> State
 mkState = State def
 
-type MonadRepo m = (MonadIO m, State.Monad State m)
+type MonadRepo m = (MonadApp m, State.Monad State m)
 type RepoT m     = State.StateT State m
 
 getCachePath :: MonadIO m => m (Path Abs File)
@@ -99,10 +114,20 @@ saveCache = do
     cachePath' <- State.use @State cachePath
     liftIO $ Yaml.encodeFile (Path.toFilePath cachePath') cacheItems
 
-getProjects :: MonadRepo m => m (Map ProjectId Project)
+parseId :: ByteString -> Maybe Project.Id
+parseId = UUID.fromASCIIBytes
+
+getProjects :: MonadRepo m => m (Map Project.Id Project)
 getProjects = State.use @State projects
 
-run :: MonadIO m => RepoT m a -> m a
+getProject :: MonadRepo m => Project.Id -> m Project
+getProject id = do
+    mayProject <- State.use @State $ projects . at id
+    case mayProject of
+        Just project -> pure project
+        Nothing -> App.throwHttp $ ProjectDoesNotExist id
+
+run :: MonadApp m => RepoT m a -> m a
 run action = do
     cachePath <- getCachePath
     projectsRootPath <- getProjectsRootPath

@@ -6,14 +6,14 @@ import qualified Control.Lens.Aeson as LensAeson
 import qualified Data.Aeson         as Aeson
 
 import Path (Path, Abs, Dir)
+import Data.UUID (UUID)
 
 data Item = Item
-    { _name         :: Text
+    { _id           :: UUID
+    , _name         :: Text
     , _path         :: Path Abs Dir
     , _thumb        :: Maybe Text
-    , _description  :: Maybe Text
     , _lastOpenTime :: Maybe Int64
-    , _openUri      :: Text
     } deriving (Eq, Generic, Show)
 
 makeLenses ''Item
