@@ -196,9 +196,6 @@ openMainIfExists = ->
     mainLocation = path.join projectPath, 'src', 'Main.luna'
     if fs.existsSync mainLocation
         atom.workspace.open(mainLocation, {split: atom.config.get('luna-studio.preferredCodeEditorPosition')})
-        target = atom.views.getView atom.workspace
-        atom.commands.dispatch(target, 'tree-view:reveal-active-file')
-
 
 selectLunaProject = (e) ->
     e.stopImmediatePropagation()
@@ -239,7 +236,6 @@ module.exports =
         refreshRecentList: (callback) =>
             recentProjects = []
             request.get {url: "http://127.0.0.1:50505/projects", json: true}, (e, r, projects) ->
-                console.log(projects)
                 recentProjects = projects.map (project) ->
                     mkRecentProject(project.path, project.name, project.thumb)
                 callback?()

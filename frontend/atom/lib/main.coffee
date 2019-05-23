@@ -13,6 +13,7 @@ LunaWelcomeTab = require './luna-welcome-tab'
 LunaToolbar = require './luna-toolbar'
 LunaSemanticGrammar = require './luna-grammar'
 ProjectManager = require './projects'
+RemoteDirectoryProvider = require './directory-provider'
 Statusbar = require './statusbar-view'
 version = require './version'
 (require './luna-visualizers')()

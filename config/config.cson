@@ -10,6 +10,7 @@
       "linter"
       "welcome"
       "wrap-guide"
+      "tree-view"
     ]
     packagesWithKeymapsDisabled: []
     restorePreviousWindowsOnStart: "no"
@@ -58,7 +59,3 @@
   "status-bar": {}
   "tool-bar":
     position: "Left"
-  "tree-view":
-    hideIgnoredNames: true
-    hideVcsIgnoredFiles: true
-    squashDirectoryNames: true

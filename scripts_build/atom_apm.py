@@ -71,12 +71,12 @@ apm_path = get_path('apm')
 oniguruma_path = get_path('oniguruma')
 
 
-atom_packages = {
-    'luna-syntax': 'https://github.com/luna/luna-studio-syntax-theme.git',
-    'luna-dark-ui': 'https://github.com/luna/luna-studio-ui-theme.git',
-    'luna-dpi': 'https://github.com/luna/luna-studio-dpi.git',
-    'settings-view': 'https://github.com/luna/atom-settings-view.git',
-}
+atom_packages = [
+    ('luna-syntax', 'https://github.com/luna/luna-studio-syntax-theme.git', 'master'),
+    ('luna-dark-ui', 'https://github.com/luna/luna-studio-ui-theme.git', 'no-treeview'),
+    ('luna-dpi', 'https://github.com/luna/luna-studio-dpi.git', 'master'),
+    ('settings-view', 'https://github.com/luna/atom-settings-view.git', 'master')
+]
 
 #########################################################
 #                   APM UTILS                           #
@@ -129,11 +129,12 @@ def copy_studio (package_path, gui_url, frontend_args):
     dir_util.copy_tree(studio_atom_source_path, package_path)
 
 
-def apm_luna_atom_package (package_name, package_address):
+def apm_luna_atom_package (package_name, package_address, branch='master'):
     with working_directory(packages_path):
         output = run_process('git', 'clone', package_address, package_name)
         print(output)
         with working_directory(package_name):
+            run_process('git', 'checkout', branch)
             output2 = run_apm('install', '.')
             print(output2)
 
@@ -247,8 +248,8 @@ def modify_atom_icon():
 def run(gui_url, frontend_args, link=False):
     print("Installing Atom packages")
     init_apm(gui_url, frontend_args, link)
-    for pkg_name, pkg_url in atom_packages.items():
-        apm_luna_atom_package(pkg_name, pkg_url)
+    for pkg_name, pkg_url, pkg_branch in atom_packages:
+        apm_luna_atom_package(pkg_name, pkg_url, pkg_branch)
     apm_packages()
     modify_atom_package_json()
     modify_atom_icon()
