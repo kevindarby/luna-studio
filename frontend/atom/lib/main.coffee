@@ -1,4 +1,3 @@
-
 fs       = require 'fs-plus'
 path     = require 'path'
 yaml     = require 'js-yaml'
@@ -19,6 +18,8 @@ version = require './version'
 (require './luna-visualizers')()
 codeEditor = (require './gen/text-editor-ghcjs.js')()
 nodeEditor = (require './gen/node-editor-ghcjs.js')()
+
+window.treeView = require "luna-tree-view"
 
 
 LUNA_STUDIO_URI  = 'atom://luna/studio'
@@ -46,6 +47,11 @@ class LunaStudio
         @guide   = new VisualGuide nodeEditor
         @moving = false
         version.checkUpdates()
+
+        tv = new treeView.TreeView
+        tv.setTree(treeView.dirJson)
+        atom.workspace.addLeftPanel({item: tv.element})
+
         actStatus = (act, arg0, arg1) =>
             switch act
                 when 'Init'
