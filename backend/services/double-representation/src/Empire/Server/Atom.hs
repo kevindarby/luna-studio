@@ -79,14 +79,6 @@ handleCreateProject req@(Request _ _ (CreateProject.Request path)) = do
         Right path' -> do
             replyOk req ()
 
--- from package `extra` with BSD3 licence 
-partitionM :: Monad m => (a -> m Bool) -> [a] -> m ([a],[a])
-partitionM f [] = return ([],[])
-partitionM f (x:xs) = do 
-    res <- f x 
-    (as, bs) <- partitionM f xs
-    return ([x | res] ++ as, [x | not res] ++ bs)
-
 handleMoveProject :: Request MoveProject.Request -> StateT Env Bus.App ()
 handleMoveProject req@(Request _ _ (MoveProject.Request oldPath newPath)) = do
     result <- liftIO $ try $ do

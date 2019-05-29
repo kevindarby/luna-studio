@@ -15,6 +15,7 @@ module.exports = {
             this.update = this.update.bind(this);
             this.render = this.render.bind(this);
             this.thumbLogo = this.thumbLogo.bind(this);
+            this.id = project.id;
             this.uri = project.uri;
             this.name = project.name != undefined ? project.name :
                 (project.uri != undefined ? path.basename(project.uri) : '(Unnamed)');

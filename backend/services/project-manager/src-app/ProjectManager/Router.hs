@@ -22,4 +22,5 @@ serveProject = App.handleHttpExceptions $ do
     id <- maybe (App.throwHttp ProjectsRepo.InvalidId) pure
         (ProjectsRepo.parseId =<< maybeId)
     Snap.route [("", App.handleWith $ ProjectsController.get id),
-                ("thumb", ProjectsController.getThumb id)]
+                ("thumb", ProjectsController.getThumb id),
+                ("tree", App.handleWith $ ProjectsController.getTree id)]

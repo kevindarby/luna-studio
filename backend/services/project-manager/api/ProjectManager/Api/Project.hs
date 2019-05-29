@@ -24,4 +24,3 @@ instance Aeson.ToJSON Item where
 
 instance Aeson.FromJSON Item where
     parseJSON = LensAeson.parse
-

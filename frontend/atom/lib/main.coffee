@@ -48,9 +48,10 @@ class LunaStudio
         @moving = false
         version.checkUpdates()
 
-        tv = new treeView.TreeView
-        tv.setTree(treeView.dirJson)
-        atom.workspace.addLeftPanel({item: tv.element})
+        @treeView = new treeView.TreeView
+        @treeView.onOpen (path) =>
+            atom.workspace.open(path, {split: atom.config.get('luna-studio.preferredCodeEditorPosition')})
+        atom.workspace.addLeftPanel({item: @treeView.element})
 
         actStatus = (act, arg0, arg1) =>
             switch act
@@ -179,14 +180,16 @@ class LunaStudio
                     atom.workspace.open(e.path, {split: atom.config.get('luna-studio.preferredCodeEditorPosition')})
 
     handleProjectPathsChange: (projectPaths) =>
+        console.log(projectPaths)
         projectPath = projectPaths[0]
         if projectPath?
-            @projects.addRecent projectPath
+            #@projects.addRecent projectPath
             codeEditor.pushInternalEvent(tag: "SetProject", _path: projectPath)
             analytics.track 'LunaStudio.Project.Open',
                 name: path.basename projectPath
                 path: projectPath
             @welcome.close()
+            @projects.getTree(projectPath, (tree) => @treeView.setTree tree)
         if @moving
             @moving = false
         else

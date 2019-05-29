@@ -149,11 +149,12 @@ recentProjectsPaths = ->
         paths.push recentProject.uri
     return paths
 
-mkRecentProject = (projectPath, name, thumb) ->
-    new ProjectItem {uri: projectPath, thumb: thumb, name: name}, recentClasses, (progress, finalize) =>
+mkRecentProject = (id, projectPath, name, thumb) ->
+    uri = "http://127.0.0.1:50505/projects/#{id}"
+    new ProjectItem {id: id, uri: uri, thumb: thumb, name: name}, recentClasses, (progress, finalize) =>
         progress 0.5
         tryCloseAllFiles =>
-            atom.project.setPaths [projectPath]
+            atom.project.setPaths [id]
         finalize()
 
 loadRecentNoCheck = (callback) =>
@@ -237,7 +238,7 @@ module.exports =
             recentProjects = []
             request.get {url: "http://127.0.0.1:50505/projects", json: true}, (e, r, projects) ->
                 recentProjects = projects.map (project) ->
-                    mkRecentProject(project.path, project.name, project.thumb)
+                    mkRecentProject(project.id, project.path, project.name, project.thumb)
                 callback?()
 
         addRecent: (recentProjectPath) =>
@@ -256,3 +257,9 @@ module.exports =
             sampleProjects
 
         refreshSampleProjectList: refreshSampleProjectList
+
+        getTree: (id, callback) =>
+            uri = "http://127.0.0.1:50505/projects/#{id}/tree"
+            request.get {url: uri, json: true}, (e, r, tree) ->
+                console.log(tree)
+                callback(tree)
